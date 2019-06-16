@@ -14,7 +14,7 @@ def make_plot(v):
     l = []
     
     for j in df.iloc[v]:
-        l.append(j)
+        l.append(j+5)
     
     labels = ["August","September","October","November","December","January","February","March","April","May","June"]
     counts = l
@@ -26,6 +26,8 @@ def make_plot(v):
 
     p.vbar(x='months', top='counts', width=0.9, color='color', legend="months", source=source)
 
+    p.line(x=labels, y=counts, color='black', line_width=2)
+
     p.xgrid.grid_line_color = None
     p.ygrid.grid_line_color = None
     p.y_range.start = 0
@@ -34,6 +36,7 @@ def make_plot(v):
     p.outline_line_color = None
     p.background_fill_color = None
     p.border_fill_color = None
+    p.sizing_mode ='scale_width'
 
     # p = figure(x_range=labels, plot_width=920, plot_height=500, title=str(df.columns[v]), toolbar_location=None, tools="")
 
