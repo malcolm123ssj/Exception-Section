@@ -1,6 +1,8 @@
 import random
 from bokeh.plotting import figure
 from bokeh.embed import components
+from bokeh.models import ColumnDataSource
+from bokeh.palettes import Spectral11 
 import requests
 from flask import Flask, render_template, request
 import pandas as pd
@@ -17,12 +19,29 @@ def make_plot(v):
     labels = ["August","September","October","November","December","January","February","March","April","May","June"]
     counts = l
 
-    p = figure(x_range=labels, plot_width=920, plot_height=500, title=str(df.columns[v]), toolbar_location=None, tools="")
+    source = ColumnDataSource(data=dict(months=labels, counts=counts, color=Spectral11))
 
-    p.vbar(x=labels, top=counts, width=0.9)
+    p = figure(x_range=labels, plot_width=920, plot_height=500, title=str(df.columns[v]),
+            toolbar_location=None, tools="")
+
+    p.vbar(x='months', top='counts', width=0.9, color='color', legend="months", source=source)
 
     p.xgrid.grid_line_color = None
+    p.ygrid.grid_line_color = None
     p.y_range.start = 0
+    p.legend.orientation = "horizontal"
+    p.legend.location = (35, 0)
+    p.outline_line_color = None
+    p.background_fill_color = None
+    p.border_fill_color = None
+
+    # p = figure(x_range=labels, plot_width=920, plot_height=500, title=str(df.columns[v]), toolbar_location=None, tools="")
+
+    # p.vbar(x=labels, top=counts, width=0.9)
+
+    # p.xgrid.grid_line_color = None
+    # p.ygrid.grid_line_color = None
+    # p.y_range.start = 0
 
     script, div = components(p)
     return script, div
