@@ -15,7 +15,7 @@ Data from August 2018 to June 2019 was scraped, extracted, cleaned and stored in
 
 ### MODEL TRAINING AND DATA ANALYSIS
 
-The model used for training and clustering data is LDA(Latent Dirichlet Allocation) whose description can be found [here][https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation]. Clusters of the topics were formed which were then used to classify each of the articles into a given cluster using [robability distribution][https://en.wikipedia.org/wiki/Probability_distribution] of words in a cluster. Now a frequency table corresponding to each month was created and can be used as a [Supervised Model][https://en.wikipedia.org/wiki/Supervised_learning] for future analysis.
+The model used for training and clustering data is LDA(Latent Dirichlet Allocation) whose description can be found [here](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation). Clusters of the topics were formed which were then used to classify each of the articles into a given cluster using [robability distribution](https://en.wikipedia.org/wiki/Probability_distribution) of words in a cluster. Now a frequency table corresponding to each month was created and can be used as a [Supervised Model](https://en.wikipedia.org/wiki/Supervised_learning) for future analysis.
 
 ### FRONTEND AND BACKEND
 
